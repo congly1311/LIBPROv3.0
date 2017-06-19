@@ -78,13 +78,13 @@
     <ClInclude Include="InMatKhau.h" />
     <ClInclude Include="InMuonSach.h" />
     <ClInclude Include="KhoaNguoiDung.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="MuonSach.h" />
     <ClInclude Include="MuonTraSach.h" />
     <ClInclude Include="NguoiDung.h" />
     <ClInclude Include="Quyen.h" />
     <ClInclude Include="Sach.h" />
     <ClInclude Include="ShowMenu.h" />
-    <ClInclude Include="ThemNguoiDung.h" />
     <ClInclude Include="ThemSach.h" />
     <ClInclude Include="ThongBao.h" />
     <ClInclude Include="ThongBaoTuDong.h" />

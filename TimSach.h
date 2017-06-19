@@ -72,23 +72,20 @@ void timsach(Sach sach[]){
 						cout << " ___________________________________________" << endl;
 						cout << "|                   TIM THAY  !             |" << endl;
 						cout << "|___________________________________________|" << endl;
-						cout << " _________##########################################_________#QUANG_ " << endl;
-						cout << setw(5) << left << "|Ma so" << setw(30) << left << "|Ten sach"
-							<< setw(30) << left << "|Tac gia" << setw(20) << left << "|The loai"
-							<< setw(20) << left << "|Ngon ngu" << setw(15) << left << "|Danh gia"
-							<< setw(10) << left << "|Trang thai" << "|" << endl;
-						cout << "|_____|____________________________________________________________________________|" << endl;
+						cout << endl << endl << endl;
+						cout << " ____________________________________________________________________________________________________________________";
+						cout << endl;
+						cout << "|" << setw(5) << left << "Ma so" << "|" << setw(30) << left << "Ten sach" << "|" << setw(20) << left << "Tac gia" << "|" << setw(15) << left << "The loai" << "|" << setw(20) << left << "Ngon ngu" << "|" << setw(10) << left << "Danh gia" << "|" << setw(10) << left << "Trang thai" << "|" << endl;
+						cout << "|_____|______________________________|____________________|_______________|____________________|__________|__________|" << endl;
 						for (int j = i; j < s; j++) {
 							if (timkiemchuoi(sach[j].tensach, name) == 1) {
-								cout << "|" << setw(4) << left << sach[j].ID << "|" << setw(29) << left << sach[j].tensach
-									<< "|" << setw(29) << left << sach[j].tentacgia << "|" << setw(19) << left << sach[j].theloai
-									<< "|" << setw(19) << left << sach[j].ngonngu << "|" << setw(14) << left << sach[j].danhgia;
-								cout << "|" << setw(14) << left;
-								if (sach[j].trangthai == 1) cout << "Chua muon";
-								else cout << "Da muon";
-								cout << "|" << endl;
+								cout << "|" << setw(5) << left << sach[j].ID << "|" << setw(30) << left << sach[j].tensach << "|" << setw(20) << left << sach[j].tentacgia << "|" << setw(15) << left << sach[j].theloai << "|" << setw(20) << left << sach[j].ngonngu << "|" << setw(10) << left << setprecision(2) << sach[j].danhgia << "|";
+								cout << setw(10) << left;
+								if (sach[j].trangthai == 1) cout << "Chua muon" << "|" << endl;
+								else cout << "Da muon" << "|" << endl;
 							}
 						}
+						cout << "|_____|______________________________|____________________|_______________|____________________|__________|__________|" << endl;
 						break;
 					}
 				}
@@ -111,28 +108,32 @@ void timsach(Sach sach[]){
 				cout << "Nhap ten Tac gia can tim :"; cin.getline(name, 30);
 				for (i = 0; i < s; i++) {
 					if (timkiemchuoi(sach[i].tentacgia, name) == 1) {
-						cout << "_____________________________________________#QUANG" << endl;
+
 						cout << " _____________________________________" << endl;
 						cout << "|               TIM THAY              |" << endl;
 						cout << "|_____________________________________|" << endl;
-						cout << setw(5) << left << "Ma so" << setw(30) << left << "Ten sach"
-							<< setw(30) << left << "Tac gia" << setw(20) << left << "The loai"
-							<< setw(20) << left << "Ngon ngu" << setw(15) << left << "Danh gia"
-							<< setw(10) << left << "Trang thai" << endl;
+						cout << endl << endl << endl;
+						cout << " ____________________________________________________________________________________________________________________";
+						cout << endl;
+						cout << "|" << setw(5) << left << "Ma so" << "|" << setw(30) << left << "Ten sach" << "|" << setw(20) << left << "Tac gia" << "|" << setw(15) << left << "The loai" << "|" << setw(20) << left << "Ngon ngu" << "|" << setw(10) << left << "Danh gia" << "|" << setw(10) << left << "Trang thai" << "|" << endl;
+						cout << "|_____|______________________________|____________________|_______________|____________________|__________|__________|" << endl;
 						for (int j = i; j < s; j++) {
 							if (timkiemchuoi(sach[j].tentacgia, name) == 1) {
-								cout << setw(5) << left << sach[j].ID << setw(30) << left << sach[j].tensach
-									<< setw(30) << left << sach[j].tentacgia << setw(20) << left << sach[j].theloai
-									<< setw(20) << left << sach[j].ngonngu << setw(15) << left << sach[j].danhgia;
-								cout << setw(15) << left;
-								if (sach[j].trangthai == 1) cout << "Chua muon" << endl;
-								else cout << "Da muon" << endl;
+								cout << "|" << setw(5) << left << sach[j].ID << "|" << setw(30) << left << sach[j].tensach << "|" << setw(20) << left << sach[j].tentacgia << "|" << setw(15) << left << sach[j].theloai << "|" << setw(20) << left << sach[j].ngonngu << "|" << setw(10) << left << setprecision(2) << sach[j].danhgia << "|";
+								cout << setw(10) << left;
+								if (sach[j].trangthai == 1) cout << "Chua muon" << "|" << endl;
+								else cout << "Da muon" << "|" << endl;
 							}
 						}
+						cout << "|_____|______________________________|____________________|_______________|____________________|__________|__________|" << endl;
 						break;
 					}
 				}
-				if (i == s) cout << "Khong tim thay Sach nay!" << endl;
+				if (i == s) {
+					cout << " ___________________________________________" << endl;
+					cout << "|               KHONG TIM THAY !            |" << endl;
+					cout << "|___________________________________________|" << endl;
+				}
 				system("pause");
 				break;
 	}

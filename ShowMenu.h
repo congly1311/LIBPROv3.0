@@ -1,10 +1,10 @@
 #pragma once
 #include "NguoiDung.h"
 #include "Quyen.h"
-void ShowMenu(NguoiDung ngDung[], int chucvu, Quyen quyen[], int m){
+void ShowMenu(NguoiDung ngDung[], Quyen quyen[], int vaitro){
 
 	system("cls");
-	if (m == 1 || chucvu == 1){
+	if (vaitro == 10){
 		cout << " ________________________________________________________________" << endl;
 		cout << "|               Ban dang dang nhap voi vai tro Admin             | " << endl;
 		cout << "|________________________________________________________________|" << endl;
@@ -21,7 +21,7 @@ void ShowMenu(NguoiDung ngDung[], int chucvu, Quyen quyen[], int m){
 		}
 		cout << "|________________________________________________________________|" << endl;
 	}
-	else if (m == 2){
+	else if (vaitro == 20){
 		cout << " ________________________________________________________________" << endl;
 		cout << "|              Ban dang dang nhap voi vai tro Thu thu            | " << endl;
 		cout << "|________________________________________________________________|" << endl;
@@ -38,14 +38,14 @@ void ShowMenu(NguoiDung ngDung[], int chucvu, Quyen quyen[], int m){
 		}
 		cout << "|________________________________________________________________|" << endl;
 	}
-	else {
+	else if (vaitro == 30){
 		cout << " ________________________________________________________________" << endl;
 		cout << "|              Ban dang dang nhap voi vai tro Doc gia             | " << endl;
 		cout << "|________________________________________________________________|" << endl;
 		cout << "|             ################ Menu #################            |" << endl;
 		cout << "|________________________________________________________________|" << endl;
 
-		for (int k = 0; k<23; k++) {
+		for (int k = 0; k<23; k++ ) {
 			if (quyen[k].DocGia == 1) {
 				cout << setw(5) << left << "|";
 				cout << setw(2) << right << quyen[k].stt << ". "

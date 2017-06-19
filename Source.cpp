@@ -12,6 +12,7 @@
 #include "ThongBaoTuDong.h"
 #include "ShowMenu.h"
 #include "ChucNang.h"
+#include "Login.h"
 
 #pragma warning(disable:4996)
 
@@ -83,7 +84,7 @@ int main() {
 		int m, kt = 0;
 		int chucvu;
 		m = TruyXuatNgDung(ngDung);
-
+		system("cls");
 		//cout << m << endl;
 		char user[30], pass[20];
 		cout << endl << endl << endl;
@@ -107,78 +108,49 @@ int main() {
 		cout << "                   |______________||__| |______/  |__|     |__| \\_\\ \\_______/                       " << endl;
 		Sleep(1311);
 		system("cls");
+		int vaitro;
+		
 		do {
-			system("cls");
-			cout << "################Dang Nhap################" << endl;
-			cout << "Ten Dang Nhap: "; cin.getline(user, 30);
-			cout << "Mat Khau: ";
-			inmk(pass);
-			char u[5] = "root";
-			char p[5] = "toor";
-			//cout <<ngDung[0].tenDangNhap<<endl;
-			//cout << ngDung[0].MatKhau<< endl;
-			if (strcmp(user, u) == 0 && strcmp(pass, p) == 0) {
-				system("cls");
-				cout << "Dang nhap thanh cong!" << endl;
-				chucvu = 1;
-				kt = 1;
-			}
-			else {
-				for (k = 0; k<m; k++) {
-					if (strcmp(user, ngDung[k].tenDangNhap) == 0) {
-						if (strcmp(pass, ngDung[k].MatKhau) == 0) {
-							if (ngDung[k].trangThai == 0) {
-								cout << "Tai khoan cua ban da bi khoa! lien he ad de duoc mo lai! " << endl;
-								break;
-							}
-							else {
-								system("cls");
-								cout << "Dang nhap thanh cong!" << endl;
-								//chucvu = ngDung[k].chucVu;
-								strcpy(tdn, ngDung[k].tenDangNhap);
-								taikhoanhientai = k;
-								kt = 1;
-								break;
-							}
-						}
-						else {
-							system("cls");
-							cout << "Sai mat khau. Dang nhap that bai!" << endl;
-							break;
-						}
-					}
-				}
-				if (k == m) {
-					system("cls");
-					cout << "Sai ten dang nhap!" << endl;
-				}
-			}
-			Sleep(1311);
+			kt = login(ngDung, chucvu, k);
 		} while (kt != 1);
-
+		if (ngDung[k].chucVu.admin == 1||chucvu == 1) vaitro = 10;
+		else if (ngDung[k].chucVu.thuthu == 1) vaitro = 20;
+		else vaitro = 30;
 		do {
 			system("cls");
 			int ch = 0;
-			if (ngDung[k].chucVu.admin == 1 || chucvu == 1){
-				ShowMenu(ngDung, chucvu, quyen, 1);
-				cout << "Nhap lua chon: "; cin >> op; cin.ignore();
-				if (quyen[op].Admin == 0) cout << "Ban khong duoc ho tro chuc nang nay!";
-				else kt = Chucnang(taikhoanhientai, ngDung, op, m, quyen, tdn, sach, muonsach, thongbao, yc);
+			cout << ngDung[k].sCMND << endl;
+			cout << vaitro << endl;
+			switch (vaitro){
+			case 10: {
+					ShowMenu(ngDung, quyen, vaitro);
+					cout << "Nhap lua chon: "; cin >> op; cin.ignore();
+					if (quyen[op].Admin == 0) cout << "Ban khong duoc ho tro chuc nang nay!";
+					else kt = Chucnang(k, ngDung, op, m, quyen, ngDung[k].tenDangNhap, sach, muonsach, thongbao, yc, vaitro);
+					break;
 			}
-			else if (ngDung[k].chucVu.thuthu == 1) {
-				ShowMenu(ngDung, chucvu, quyen, 2);
-				cout << "Nhap lua chon: "; cin >> op; cin.ignore();
-				if (quyen[op].ThuThu == 0) cout << "Ban khong duoc ho tro chuc nang nay!";
-				else kt = Chucnang(taikhoanhientai, ngDung, op, m, quyen, tdn, sach, muonsach, thongbao, yc);
+
+			case 20: {
+					ShowMenu(ngDung, quyen, vaitro);
+					cout << "Nhap lua chon: "; cin >> op; cin.ignore();
+					if (quyen[op].ThuThu == 0) cout << "Ban khong duoc ho tro chuc nang nay!";
+					else kt = Chucnang(k, ngDung, op, m, quyen, ngDung[k].tenDangNhap, sach, muonsach, thongbao, yc, vaitro);
+					break;
 			}
-			else {
-				ShowMenu(ngDung, chucvu, quyen, 3);
-				cout << "Nhap lua chon: "; cin >> op; cin.ignore();
-				if (quyen[op].DocGia == 0) cout << "Ban khong duoc ho tro chuc nang nay!";
-				else kt = Chucnang(taikhoanhientai, ngDung, op, m, quyen, tdn, sach, muonsach, thongbao, yc);
+			case 30: {
+					ShowMenu(ngDung, quyen, vaitro);
+					cout << "Nhap lua chon: "; cin >> op; cin.ignore();
+					if (quyen[op].DocGia == 0) cout << "Ban khong duoc ho tro chuc nang nay!";
+					else kt = Chucnang(k, ngDung, op, m, quyen, ngDung[k].tenDangNhap, sach, muonsach, thongbao, yc, vaitro);
+					break;
 			}
+			}
+
 			Sleep(1311);
-		} while (kt != 1);
+		} while (kt != -1);
+		
+
+		
 	}
 	//*/
 	return 0;
